@@ -9,5 +9,8 @@ module "iam-role" {
 module "lambda-function" {
   source = "./module/Lambda-Function"
   rekognition-collection-id-role = module.iam-role.rekognition-collection-id-role
+}
 
+module "dynamodb-table" {
+  source = "./module/DynamoDB-Table"
 }

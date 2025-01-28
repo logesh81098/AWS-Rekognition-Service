@@ -68,3 +68,9 @@ resource "aws_iam_role_policy_attachment" "rekognition-collection-id" {
   role = aws_iam_role.rekognition-collection-id-role.id
   policy_arn = aws_iam_policy.rekognition-collection-id-policy.arn
 }
+
+#################################################################################################################################################
+#                                               Deploying IAM Role
+#################################################################################################################################################
+
+#IAM Role for lambda function to collect and store Face prints in DynamoDB table
