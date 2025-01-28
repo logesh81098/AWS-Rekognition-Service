@@ -2,7 +2,7 @@
 #                                                   Archive the source code
 ##################################################################################################################################################
 
-#Archive the python code file into Zip file so that Lambda function can work on it 
+#Archive the python file into Zip file so that Lambda function can work on it 
 data "archive_file" "rekognition-collection-id-zip" {
   type = "zip"
   source_dir = "module/Lambda-Function"
@@ -24,6 +24,38 @@ resource "aws_lambda_function" "rekognition-collection-id" {
   filename = "module/Lambda-Function/rekognition-collection-id.zip"
   tags = {
     Name = "rekognition-collection-id"
+    Project = "Face-Rekognition"
+  }
+}
+
+
+##################################################################################################################################################
+#                                                   Archive the source code
+##################################################################################################################################################
+
+#Archive the python file into Zip file so that Lambda function can work on it 
+
+data "archive_file" "face-prints" {
+  type = "zip"
+  source_dir = "module/Lambda-Function"
+  output_path = "module/Lambda-Function/faceprints.zip"
+}
+
+##################################################################################################################################################
+#                                                 Deploying Lambda Function
+##################################################################################################################################################
+
+#Lambda function to create and store Faceprints
+
+resource "aws_lambda_function" "face-prints" {
+  function_name = "face-prints"
+  runtime = "python3.8"
+  timeout = "20"
+  role = var.face-prints-role
+  handler = "faceprints.lambda_handler"
+  filename = "module/Lambda-Function/faceprints.zip"
+  tags = {
+    Name = "face-prints"
     Project = "Face-Rekognition"
   }
 }
