@@ -5,3 +5,9 @@ module "s3" {
 module "iam-role" {
   source = "./module/IAM-Role"
 }
+
+module "lambda-function" {
+  source = "./module/Lambda-Function"
+  rekognition-collection-id-role = module.iam-role.rekognition-collection-id-role
+
+}
