@@ -59,3 +59,17 @@ resource "aws_lambda_function" "face-prints" {
     Project = "Face-Rekognition"
   }
 }
+
+##################################################################################################################################################
+#                                                 Updating Lambda function Permission
+##################################################################################################################################################
+
+#Updating Lambda function permission get triggered by S3 bucket 
+
+resource "aws_lambda_permission" "s3-trigger" {
+  function_name = aws_lambda_function.face-prints.function_name
+  statement_id = "InvokebyS3Object"
+  action = "lambda:InvokeFunction"
+  principal = "s3.amazonaws.com"
+  source_arn = var.s3-bucket-arn
+}
