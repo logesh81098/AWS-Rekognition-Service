@@ -5,3 +5,11 @@ output "rekognition-collection-id-role" {
 output "face-prints-role" {
   value = aws_iam_role.generate-faceprint-role.arn
 }
+
+output "eks-cluster-role" {
+  value = aws_iam_role.EKS-cluster-role.arn
+}
+
+output "eks-nodegroup-role" {
+  value = aws_iam_role.EKS-WorkerNode.arn
+}

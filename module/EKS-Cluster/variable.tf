@@ -5,3 +5,11 @@ variable "public-subnet-1" {
 variable "public-subnet-2" {
   default = {}
 }
+
+variable "eks-cluster-role" {
+  default = {}
+}
+
+variable "eks-nodegroup-role" {
+  default = {}
+}
