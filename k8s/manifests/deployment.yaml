@@ -1,0 +1,25 @@
+###############################################################################################################################################
+
+#Deployment file to deploy Face Rekognition application
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: face-rekognition-deployment
+  labels: 
+    app: face-rekognition
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:
+      app: face-rekognition
+  template: 
+    metadata:
+      labels:   
+        app: face-rekognition
+    spec:
+      containers: 
+        - name: face-rekognition
+          image: logeshshanmugavel/face-rekognition:v1
+          ports:
+            - containerPort: 81  

@@ -1,0 +1,19 @@
+#################################################################################################################################################
+
+#Service Manifest file used to expose application using single endpoint
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: face-rekognition-service
+  labels:
+    app: face-rekognition
+spec:
+  selector:
+    app: face-rekognition
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 81
+      protocol: TCP
+
